@@ -1,0 +1,294 @@
+Create a full-stack gamified learning web application inspired by GeeksforGeeks, LeetCode, and habit tracking platforms.
+
+APPLICATION FLOW:
+
+1. LANDING PAGE:
+
+* When the user opens the website, display a modern, attractive landing page.
+* Show a motivational heading like:
+  "Welcome to Gain Discipline"
+* Include:
+  → Login button
+  → Register button
+* Clean UI, centered layout, smooth animations.
+
+2. AUTHENTICATION:
+
+* User can Register and Login.
+* After login:
+  → Show user's name
+  → Display a motivational quote (e.g., "Welcome to Gain Discipline, stay consistent 🔥")
+
+3. NAVIGATION (TOP RIGHT MENU):
+
+* Add a 3-line hamburger menu with options:
+  → Home
+  → Aptitude
+  → Coding
+  → Puzzle Games
+  → Profile
+  → Notifications
+
+4. APTITUDE SECTION:
+
+TOPICS:
+Numbers
+Percentage
+Profit and Loss
+Average
+Ratio and Proportion
+Mixture and Alligation
+Time and Work
+Time Speed Distance
+Pipes and Cisterns
+Algebra
+Trigonometry (Height and Distance)
+Geometry
+Probability
+Permutation and Combination (PnC)
+Age
+
+FLOW:
+
+* When user clicks "Aptitude":
+  → Show all topics in card layout
+* When user clicks a topic:
+  → Show 3 levels:
+  🟢 Simple
+  🟡 Hard
+  🔴 Difficult
+
+QUESTION STRUCTURE:
+
+* Each level must contain EXACTLY 12 MCQs
+* Total per topic = 36 questions
+
+Each MCQ must include:
+
+* Question
+* 4 options (A, B, C, D)
+* Correct answer
+* Simple explanation (beginner-friendly)
+
+QUIZ INTERACTION:
+
+* Show one question at a time OR all 12 (configurable)
+* On correct answer:
+  → Highlight GREEN
+  → Show confetti 🎉 animation
+* On wrong answer:
+  → Highlight RED
+* Disable re-selection
+* Show progress (e.g., Question 5/12)
+* Auto-submit when time ends OR user submits
+
+RESULT SCREEN:
+
+* Show score (e.g., 9/12)
+* Show performance message:
+  → "Great job!" / "Keep practicing!"
+* Show ribbons/confetti animation
+* Show earned points
+
+APTITUDE STREAK SYSTEM:
+
+* If user solves ≥1 quiz per day:
+  → Streak increases
+* If missed:
+  → Streak resets
+
+Display:
+
+* Current streak 🔥
+* Longest streak 🏆
+* Calendar heatmap (monthly)
+
+APTITUDE POINTS SYSTEM:
+
+* +10 per correct answer
+* +50 for quiz completion
+* +100 streak bonus
+
+APTITUDE DASHBOARD (RIGHT PANEL):
+
+* Streak card
+* Calendar heatmap
+* Total points (Geekbits)
+* Redeem button
+* Stats:
+  → Problems Attempted
+  → Problems Solved
+  → Accuracy %
+
+REDEEM SYSTEM:
+
+* Use points to unlock:
+  → Premium questions
+  → Badges (Beginner, Pro, Master)
+  → Certificates
+* Show:
+  → Points balance
+  → Reward catalog
+
+5. CODING SECTION:
+
+TOPICS:
+
+* Arrays
+* Strings
+
+LEVELS:
+
+* 🟢 Simple
+* 🟡 Hard
+* 🔴 Difficult
+
+Each level contains:
+
+* At least 12 coding problems
+
+EACH PROBLEM INCLUDES:
+
+* Title
+* Description
+* Input/Output format
+* Constraints
+* Sample test cases
+* Hidden test cases
+
+CODING INTERFACE:
+
+* Code editor (like GFG/LeetCode)
+* Supported languages:
+  → JavaScript
+  → Java
+  → Python
+
+FEATURES:
+
+* Run Code button
+* Submit Code button
+* Show output
+* Show test case results (Passed/Failed)
+
+CODING STREAK SYSTEM:
+
+* Separate from aptitude streak
+* If ≥1 problem solved per day:
+  → streak++
+* If missed:
+  → reset
+
+Display:
+
+* Current coding streak 🔥
+* Longest coding streak
+* Heatmap
+
+CODING POINTS SYSTEM:
+
+* +20 per problem
+* +50 daily problem bonus
+* +100 streak bonus
+
+DAILY PROBLEM:
+
+* Show "Problem of the Day"
+* Refresh every 24 hours
+
+CODING DASHBOARD:
+
+* Problems solved
+* Accuracy %
+* Streak
+* Points
+* Recent activity
+
+6. COMMON FEATURES:
+
+DATA STORAGE:
+
+* Store:
+  → User progress
+  → Answers
+  → Scores
+  → Streak
+  → Points
+* Use:
+  → MongoDB (backend) OR
+  → localStorage (frontend for demo)
+
+JSON FORMAT (APTITUDE):
+{
+topic: "",
+level: "",
+questions: [
+{
+question: "",
+options: ["A", "B", "C", "D"],
+correctAnswer: "",
+explanation: ""
+}
+]
+}
+
+JSON FORMAT (CODING):
+{
+topic: "",
+level: "",
+title: "",
+description: "",
+input: "",
+output: "",
+constraints: "",
+sampleTestCases: [],
+hiddenTestCases: []
+}
+
+7. COMING SOON SCREEN:
+
+When topic is not available:
+
+* Show centered card:
+
+Title:
+🚧 Coming Soon
+
+Message:
+This topic is currently under development.
+
+Subtext:
+Practice content will be available soon. Stay consistent 🔥
+
+Buttons:
+
+* Go Back
+* Notify Me
+
+UI:
+
+* Smooth animations
+* Clean design
+* Mobile responsive
+
+8. UI/UX REQUIREMENTS:
+
+* Modern clean design (GFG-inspired)
+* Dark/light mode
+* Mobile responsive
+* Card-based layout
+* Smooth animations
+* Sidebar navigation
+* Right panel dashboard
+
+9. OPTIONAL ADVANCED FEATURES:
+
+* Leaderboard system
+* Daily challenges
+* Timer for quizzes
+* Sound effects
+* AI hints
+* Resume progress
+
+GOAL:
+Build a complete gamified aptitude + coding + habit platform that encourages daily practice using streaks, rewards, and interactive learning.
