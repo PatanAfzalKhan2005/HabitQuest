@@ -1,5 +1,5 @@
 import axios from "axios";
-import { API_ROOT } from "@/lib/api-base";
+import { API_ROOT } from "@/services/api-base";
 
 const API = axios.create({
   baseURL: API_ROOT,

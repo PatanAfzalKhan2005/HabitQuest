@@ -16,6 +16,9 @@ backend/node_modules
 # frontend/backend builds
 frontend/dist
 backend/dist
+artifacts
+frontend/.replit-artifact
+backend/.replit-artifact
 
 # environment files
 backend/.env

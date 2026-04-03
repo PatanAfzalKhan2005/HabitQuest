@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const activityLogSchema = new mongoose.Schema(
   {
-    activityType: { type: String, enum: ["aptitude", "coding"], required: true },
+    activityType: { type: String, enum: ["aptitude", "coding", "dictionary"], required: true },
     activityDate: { type: String, required: true },
     count: { type: Number, default: 1 },
   },

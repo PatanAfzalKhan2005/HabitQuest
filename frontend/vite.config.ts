@@ -14,7 +14,7 @@ export default defineConfig({
       "@": path.resolve(import.meta.dirname, "src"),
       "@assets": path.resolve(import.meta.dirname, "..", "attached_assets"),
       "@workspace/api-client-react": path.resolve(import.meta.dirname, "src", "services", "api-hooks.ts"),
-      "@workspace/replit-auth-web": path.resolve(import.meta.dirname, "src", "auth", "replit-auth-web.ts"),
+      "@workspace/replit-auth-web": path.resolve(import.meta.dirname, "src", "features", "auth", "replit-auth-web.ts"),
     },
     dedupe: ["react", "react-dom"],
   },

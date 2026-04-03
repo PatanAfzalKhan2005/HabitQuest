@@ -6,7 +6,9 @@ import {
   availableTopics,
   getTopics,
   topicDisplayNames,
+  getQuestions,
 } from "../data/aptitudeData.js";
+import { getUserQuestions } from "../data/aptitudeUserQuestions.js";
 import {
   calculateNextStreak,
   mergeHeatmapEntry,
@@ -58,7 +60,21 @@ export async function getAptitudeQuestions(req, res) {
     return res.status(400).json({ error: "topic and level required" });
   }
 
-  const questions = await Aptitude.find({ topic, level }).lean();
+  let questions = await Aptitude.find({ topic, level }).lean();
+
+  // If DB has no questions for this topic+level (dev / seed not run),
+  // fall back to bundled question bank so the frontend still shows content.
+  if (!questions || questions.length === 0) {
+    const base = getQuestions(topic, level) || [];
+    const userQs = (getUserQuestions() || []).filter(q => q.topic === topic && q.level === level);
+    questions = base.concat(userQs || []);
+  }
+
+  // Ensure we only return up to 12 questions per topic+level
+  if (Array.isArray(questions) && questions.length > 12) {
+    questions = questions.slice(0, 12);
+  }
+
   return res.json({ questions });
 }
 
@@ -69,7 +85,15 @@ export async function submitAptitudeQuiz(req, res) {
     return res.status(400).json({ error: "topic and level required" });
   }
 
-  const questions = await Aptitude.find({ topic, level }).lean();
+  let questions = await Aptitude.find({ topic, level }).lean();
+
+  // If DB has no questions for this topic+level (dev / seed not run),
+  // fall back to bundled question bank so submission scoring still works.
+  if (!questions || questions.length === 0) {
+    const base = getQuestions(topic, level) || [];
+    const userQs = (getUserQuestions() || []).filter(q => q.topic === topic && q.level === level);
+    questions = base.concat(userQs || []);
+  }
   const answerMap = new Map(answers.map((answer) => [answer.questionId, answer.selectedAnswer]));
   let score = 0;
 

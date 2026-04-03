@@ -35,11 +35,43 @@ export function useGetCodingTopics(options = {}) {
   });
 }
 
+export function useGetCodingProblems(params, options = {}) {
+  return useQuery({
+    queryKey: ["coding-problems", params.topic, params.level],
+    queryFn: async () => (await API.get("/coding/problems", { params })).data,
+    enabled: Boolean(params.topic && params.level),
+    ...(options.query || {}),
+  });
+}
+
 export function useGetDailyProblem(options = {}) {
   return useQuery({
     queryKey: ["coding-daily"],
     queryFn: async () => (await API.get("/coding/daily")).data,
     ...(options.query || {}),
+  });
+}
+
+export function useGetTodayDictionary(options = {}) {
+  return useQuery({
+    queryKey: ["dictionary-today"],
+    queryFn: async () => (await API.get("/dictionary/today")).data,
+    ...(options.query || {}),
+  });
+}
+
+export function useGetDictionaryByDate(date, options = {}) {
+  return useQuery({
+    queryKey: ["dictionary-date", date],
+    queryFn: async () => (await API.get(`/dictionary/${date}`)).data,
+    enabled: Boolean(date),
+    ...(options.query || {}),
+  });
+}
+
+export function useCompleteDictionaryDay() {
+  return useMutation({
+    mutationFn: async ({ data }) => (await API.post("/dictionary/complete", data)).data,
   });
 }
 
@@ -49,10 +81,32 @@ export function useSubmitCodingProblem() {
   });
 }
 
+export function useRunCodingProblem() {
+  return useMutation({
+    mutationFn: async ({ data }) => (await API.post("/coding/run", data)).data,
+  });
+}
+
 export function useGetUserProfile(options = {}) {
   return useQuery({
     queryKey: ["user-profile"],
     queryFn: async () => (await API.get("/user/profile")).data,
+    ...(options.query || {}),
+  });
+}
+
+export function useGetDictionaryActivity(days = 30, options = {}) {
+  return useQuery({
+    queryKey: ["dictionary-activity", days],
+    queryFn: async () => {
+      const res = await API.get('/streak');
+      const activity = Array.isArray(res.data.activityLog) ? res.data.activityLog : [];
+      // Filter dictionary activity and map to completed boolean
+      const map = activity
+        .filter((a: any) => a.activityType === 'dictionary')
+        .map((a: any) => ({ date: a.activityDate, completed: Boolean(a.count && a.count > 0) }));
+      return map;
+    },
     ...(options.query || {}),
   });
 }

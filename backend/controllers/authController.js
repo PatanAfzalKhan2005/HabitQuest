@@ -1,43 +1,6 @@
 import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken";
 import User from "../models/User.js";
-
-function getClientBaseUrl(req) {
-  return (
-    process.env.CLIENT_URL ||
-    `${req.protocol}://${req.get("host")}`.replace(/:\d+$/, ":5173")
-  ).replace(/\/+$/, "");
-}
-
-function buildClientRedirectUrl(req, returnTo = "/") {
-  const safePath = typeof returnTo === "string" && returnTo.startsWith("/") ? returnTo : "/";
-  return `${getClientBaseUrl(req)}${safePath}`;
-}
-
-function signToken(userId) {
-  return jwt.sign({ id: userId }, process.env.JWT_SECRET, {
-    expiresIn: process.env.JWT_EXPIRES_IN || "7d",
-  });
-}
-
-function setAuthCookie(res, token) {
-  res.cookie("token", token, {
-    httpOnly: true,
-    sameSite: "lax",
-    secure: false,
-    maxAge: 7 * 24 * 60 * 60 * 1000,
-  });
-}
-
-function publicUser(user) {
-  return {
-    id: user._id,
-    email: user.email,
-    firstName: user.firstName,
-    lastName: user.lastName,
-    profileImageUrl: user.profileImageUrl,
-  };
-}
+import { buildClientRedirectUrl, publicUser, setAuthCookie, signToken } from "../utils/auth.js";
 
 export async function getCurrentUser(req, res) {
   res.json({ user: req.user ? publicUser(req.user) : null });

@@ -1,73 +1,72 @@
-# Gain Discipline
+# Learning Quest
 
-Full-stack gamified learning platform with aptitude practice, coding challenges, streak tracking, rewards, and leaderboard features.
+Full-stack learning platform with aptitude practice, coding challenges, daily words, streak tracking, rewards, and leaderboard features.
 
 ## Project Structure
 
 ```text
-gain-discipline/
-├── frontend/                  # React + Vite frontend
+Learning-Quest-1/
+├── frontend/
 │   ├── public/
-│   │   └── images/
-│   │       ├── hero-bg.png
-│   │       ├── mascot.png
-│   │       └── icons/
+│   │   ├── icons/
+│   │   ├── images/
+│   │   └── screenshots/
 │   ├── src/
 │   │   ├── assets/
 │   │   ├── components/
-│   │   │   ├── layout/
-│   │   │   ├── aptitude/
-│   │   │   ├── coding/
-│   │   │   ├── dashboard/
-│   │   │   ├── shared/
+│   │   │   ├── animations/
+│   │   │   ├── charts/
+│   │   │   ├── common/
 │   │   │   └── ui/
 │   │   ├── context/
+│   │   ├── features/
 │   │   ├── hooks/
 │   │   ├── pages/
 │   │   ├── services/
+│   │   ├── styles/
+│   │   ├── utils/
 │   │   ├── App.tsx
 │   │   ├── main.tsx
-│   │   └── index.css
+│   │   └── routes.tsx
 │   ├── package.json
 │   └── vite.config.ts
-├── backend/                   # Node + Express + MongoDB backend
-│   ├── config/
-│   ├── models/
-│   ├── controllers/
-│   ├── routes/
-│   ├── middleware/
-│   ├── utils/
-│   ├── data/
-│   ├── scripts/
-│   ├── .env
-│   ├── server.js
-│   └── package.json
-├── artifacts/                 # Original Replit source snapshots
-├── attached_assets/
+├── backend/
+│   ├── config/         # database and passport setup
+│   ├── controllers/    # request handlers
+│   ├── data/           # seed/static learning data
+│   ├── middleware/     # auth and error middleware
+│   ├── models/         # mongoose models
+│   ├── routes/         # route files + central route registry
+│   ├── scripts/        # seed scripts
+│   ├── utils/          # auth and scoring helpers
+│   ├── app.js          # express app configuration
+│   ├── package.json
+│   └── server.js       # database connect + server start
 └── README.md
 ```
 
 ## Notes
 
-- The migrated app now uses `frontend/` and `backend/` as the main MERN folders.
-- The frontend is still in TypeScript/TSX to avoid changing UI behavior during migration.
-- The backend uses Express, Mongoose, and JWT-oriented auth flow.
+- `frontend/` is the only frontend app folder.
+- `backend/` is the only backend app folder.
+- Old duplicate artifact/build folders were removed to keep the repo clean.
+- Backend request flow is now:
+  `routes -> controllers -> models/utils`
 
 ## Run
-
-Backend:
-
-```bash
-cd backend
-npm install
-npm run seed
-npm run dev
-```
 
 Frontend:
 
 ```bash
 cd frontend
+npm install
+npm run dev
+```
+
+Backend:
+
+```bash
+cd backend
 npm install
 npm run dev
 ```

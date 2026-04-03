@@ -4,6 +4,7 @@ import { connectDB } from "../config/db.js";
 import Aptitude from "../models/Aptitude.js";
 import Coding from "../models/Coding.js";
 import { getQuestions, getTopics } from "../data/aptitudeData.js";
+import { getUserQuestions } from "../data/aptitudeUserQuestions.js";
 import { codingProblems } from "../data/codingData.js";
 
 dotenv.config({ path: fileURLToPath(new URL("../.env", import.meta.url)) });
@@ -15,11 +16,15 @@ async function seed() {
     ["simple", "hard", "difficult"].flatMap((level) => getQuestions(topic, level)),
   );
 
+  // include user-provided questions (unique IDs prefixed with u-)
+  const userQs = getUserQuestions();
+  const merged = aptitudeQuestions.concat(userQs || []);
+
   await Aptitude.deleteMany({});
   await Coding.deleteMany({});
 
-  if (aptitudeQuestions.length) {
-    await Aptitude.insertMany(aptitudeQuestions);
+  if (merged.length) {
+    await Aptitude.insertMany(merged);
   }
 
   if (codingProblems.length) {
