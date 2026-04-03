@@ -33,7 +33,7 @@ export function HabitTrackerPage() {
             </p>
             <h1 className="mt-4 text-4xl font-display font-bold text-foreground">Build the routine behind the results.</h1>
             <p className="mt-3 max-w-2xl text-base leading-7 text-muted-foreground">
-              Check off your daily essentials. When all seven are complete, Learning Quest automatically records the activity and extends your streak.
+              Check off your daily essentials. When all seven are complete, HabitQuest automatically records the activity and extends your streak.
             </p>
           </div>
           <div className="rounded-[1.5rem] border border-white/10 bg-black/20 px-6 py-4">

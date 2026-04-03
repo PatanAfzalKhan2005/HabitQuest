@@ -36,7 +36,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
             <div className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
               <Zap size={18} className="fill-current" />
             </div>
-            <span className="font-display font-bold text-lg tracking-tight text-foreground">Learning Quest</span>
+            <span className="font-display font-bold text-lg tracking-tight text-foreground">HabitQuest</span>
           </Link>
         </div>
 
@@ -88,7 +88,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <div className="md:hidden fixed top-0 left-0 right-0 h-16 border-b border-border bg-background/80 backdrop-blur-lg z-50 flex items-center justify-between px-4">
         <Link href="/" className="flex items-center gap-2">
           <Zap size={20} className="text-primary fill-primary" />
-          <span className="font-display font-bold text-lg">Learning Quest</span>
+          <span className="font-display font-bold text-lg">HabitQuest</span>
         </Link>
         <button onClick={() => setMobileMenuOpen(true)} className="p-2 text-foreground">
           <Menu size={24} />

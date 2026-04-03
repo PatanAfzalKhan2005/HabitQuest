@@ -48,7 +48,7 @@ export function Dashboard() {
           <div>
             <p className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-2 text-sm font-semibold text-primary">
               <Sparkles size={16} />
-              Welcome to Learning Quest
+              Welcome to HabitQuest
             </p>
             <h1 className="mt-5 text-4xl font-display font-bold text-foreground md:text-5xl">
               Hi {user.name.split(" ")[0]}, your streak is glowing.

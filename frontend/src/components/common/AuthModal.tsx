@@ -102,10 +102,10 @@ export function AuthModal({ isOpen, onClose }: Props) {
             <div className="mb-4">
               <p className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-semibold uppercase tracking-[0.25em] text-primary">
                 <Mail size={12} />
-                Learning Quest
+                HabitQuest
               </p>
               <h2 className="mt-4 font-display text-2xl font-bold text-foreground">
-                {mode === "login" ? "Welcome Back" : "Create your quest profile"}
+                {mode === "login" ? "Welcome Back" : "Create your HabitQuest profile"}
               </h2>
               <p className="mt-2 text-sm text-muted-foreground">
                 Glassmorphism UI, social sign-in, and a saved local session are ready so users enter the platform only after authentication.

@@ -36,7 +36,7 @@ export function Landing() {
       <nav className="relative z-10 max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <Zap size={24} className="text-primary fill-primary" />
-          <span className="font-display font-bold text-xl text-foreground">Learning Quest</span>
+          <span className="font-display font-bold text-xl text-foreground">HabitQuest</span>
         </div>
         <button 
           onClick={() => setAuthOpen(true)}
