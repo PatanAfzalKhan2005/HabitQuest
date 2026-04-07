@@ -20,7 +20,10 @@ artifacts
 frontend/.replit-artifact
 backend/.replit-artifact
 
-# environment files
+# lock files
+frontend/package-lock.json
+backend/package-lock.json
+
 backend/.env
 
 # IDEs and editors
