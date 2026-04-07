@@ -12,7 +12,7 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": path.resolve(import.meta.dirname, "src"),
-      "@assets": path.resolve(import.meta.dirname, "..", "attached_assets"),
+      "@assets": path.resolve(import.meta.dirname, "src", "assets"),
       "@workspace/api-client-react": path.resolve(import.meta.dirname, "src", "services", "api-hooks.ts"),
       "@workspace/replit-auth-web": path.resolve(import.meta.dirname, "src", "features", "auth", "replit-auth-web.ts"),
     },
@@ -20,7 +20,7 @@ export default defineConfig({
   },
   root: path.resolve(import.meta.dirname),
   build: {
-    outDir: path.resolve(import.meta.dirname, "dist/public"),
+    outDir: path.resolve(import.meta.dirname, "dist"),
     emptyOutDir: true,
   },
   server: {
